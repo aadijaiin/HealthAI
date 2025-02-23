@@ -34,20 +34,18 @@ const Navbar = () => {
             >
               Generate Image
             </Link>
-            <Link href="/Chatbot" className="text-gray-300 hover:text-white">
+            <Link href="/ChatBot" className="text-gray-300 hover:text-white">
               Chatbot
             </Link>
-            <Link href="/#feedback" className="text-gray-300 hover:text-white">
-              Feedback
-            </Link>
+            
             {/* <Link href="#contact" className="text-gray-300 hover:text-white">
               Contact
             </Link> */}
             <button
-              onClick={() => handleClick()}
+              href="#"
               className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-full hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-[0_0_15px_rgba(147,51,234,0.3)]"
             >
-              Sign-Up
+              Feedback
             </button>
           </div>
         </div>

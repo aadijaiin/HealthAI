@@ -7,7 +7,7 @@ import Footer from "../components/ImageGenerate";
 import { PropertyMixer } from "three";
 import ProtectedRoute from "../components/ProtectedRoutes";
 
-function Chatbot() {
+function ChatBot() {
   const [messages, setMessages] = useState([
     {
       text: "Hello! I'm HealthAI, your health assistant. How can I help you with your health-related queries today?",
@@ -108,7 +108,8 @@ function Chatbot() {
       <Footer />
     </div>
     </ProtectedRoute>
+
   );
 }
 
-export default Chatbot;
+export default ChatBot;

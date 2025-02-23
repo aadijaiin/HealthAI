@@ -27,7 +27,7 @@ export default function SignIn() {
       const response = await axios.post("http://localhost:5000/api/signin", formData);
       if (response.data.token) {
         login(response.data.token);
-        router.push("/dashboard");
+        router.push("/");
       } else {
         setError("Invalid credentials. Please try again.");
       }
@@ -70,7 +70,7 @@ export default function SignIn() {
         <p className="mt-4 text-center text-white">
           Don't have an account? {" "}
           <button
-            onClick={() => router.push("/Signup")}
+            onClick={() => router.push("/SignUp")}
             className="text-blue-400 hover:underline"
           >
             Sign Up

@@ -20,15 +20,17 @@ import {
   Send,
   MessageSquare,
 } from "lucide-react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/ImageGenerate";
 
 function Landing() {
-    const router = useRouter();
-    const handleClick = () => {
-        router.push("/Signup");
-      };
-      const redirect = (path) => {
-        router.push(path);
-      };
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/Signup");
+  };
+  const redirect = (path) => {
+    router.push(path);
+  };
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [rating, setRating] = useState(0);
@@ -73,50 +75,16 @@ function Landing() {
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-            <Bot
-              size={32}
-              className="text-green-500 cursor-pointer"
-              onClick={() => redirect("/")}
-            />
-            <span className="text-white text-xl font-bold ml-2">HealthAI</span>
-          </div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <NavLink href="/">Home</NavLink>
-              <NavLink href="/Generateimage">Generate Image</NavLink>
-              <NavLink href="/Chatbot">Chatbot</NavLink>
-              <NavLink href="/#feedback">Feedback</NavLink>
-              {/* <NavLink href="#contact">Contact</NavLink> */}
-              <button
-              onClick={() => handleClick()}
-              className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-full hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-[0_0_15px_rgba(147,51,234,0.3)]"
-            >
-              Sign-Up
-            </button>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-300 hover:text-white"
-              >
-                {isMenuOpen ? <X /> : <Menu />}
-              </button>
-            </div>
-          </div>
-        </div>
+        <Navbar />
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden bg-gray-900 border-b border-gray-800">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <MobileNavLink href="#home">Home</MobileNavLink>
-              <MobileNavLink href="/Generateimage">Generate Image</MobileNavLink>
+              <MobileNavLink href="/Generateimage">
+                Generate Image
+              </MobileNavLink>
               <MobileNavLink href="/Chatbot">Chatbot</MobileNavLink>
               <MobileNavLink href="#feedback">Feedback</MobileNavLink>
               <MobileNavLink href="#contact">Contact</MobileNavLink>
@@ -156,7 +124,7 @@ function Landing() {
             <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                src="https://plus.unsplash.com/premium_photo-1739258662666-208c45bb667b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Medical Professional"
                 className="rounded-2xl shadow-2xl transform group-hover:scale-105 transition-all duration-500"
               />
@@ -184,17 +152,27 @@ function Landing() {
           <div className="grid md:grid-cols-3 gap-8">
             <ServiceCard
               icon={<Heart className="w-12 h-12 text-purple-500" />}
-              title="Cardiology"
+              title="Personalised Treatment Plan"
               description="Expert heart care with advanced diagnostic and treatment options."
             />
             <ServiceCard
               icon={<Activity className="w-12 h-12 text-purple-500" />}
-              title="Emergency Care"
-              description="24/7 emergency medical services with rapid response times."
+              title="Multimodal ImageText-Text"
+              description="Multimodel diagnostics for accurate and timely results."
             />
             <ServiceCard
               icon={<Clock className="w-12 h-12 text-purple-500" />}
-              title="Online Consultation"
+              title="Synthetic Data Generation"
+              description="Virtual healthcare from the comfort of your home."
+            />
+            <ServiceCard
+              icon={<Clock className="w-12 h-12 text-purple-500" />}
+              title="ChatBot"
+              description="Virtual healthcare from the comfort of your home."
+            />
+            <ServiceCard
+              icon={<Clock className="w-12 h-12 text-purple-500" />}
+              title="TB detection"
               description="Virtual healthcare from the comfort of your home."
             />
           </div>
@@ -202,100 +180,7 @@ function Landing() {
       </section>
 
       {/* New Feedback Section */}
-      <section className="py-20 px-4 relative" id="feedback">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-blue-900/20 backdrop-blur-3xl"></div>
-        <div className="max-w-4xl mx-auto relative">
-          <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500">
-            Share Your Experience
-          </h2>
-          <div className="bg-gray-900/50 p-8 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.3)] backdrop-blur-sm border border-gray-800">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-gray-300 mb-2">Name</label>
-                  <input
-                    type="text"
-                    value={feedbackForm.name}
-                    onChange={(e) =>
-                      setFeedbackForm({ ...feedbackForm, name: e.target.value })
-                    }
-                    className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
-                    placeholder="Your name"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-gray-300 mb-2">Email</label>
-                  <input
-                    type="email"
-                    value={feedbackForm.email}
-                    onChange={(e) =>
-                      setFeedbackForm({
-                        ...feedbackForm,
-                        email: e.target.value,
-                      })
-                    }
-                    className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
-                    placeholder="your@email.com"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-gray-300 mb-2">Your Rating</label>
-                <div className="flex space-x-2">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <button
-                      key={star}
-                      type="button"
-                      onClick={() => {
-                        setRating(star);
-                        setFeedbackForm({ ...feedbackForm, rating: star });
-                      }}
-                      onMouseEnter={() => setHoveredStar(star)}
-                      onMouseLeave={() => setHoveredStar(0)}
-                      className="transform hover:scale-110 transition-transform duration-200"
-                    >
-                      <Star
-                        className={`w-8 h-8 ${
-                          star <= (hoveredStar || rating)
-                            ? "fill-yellow-500 text-yellow-500"
-                            : "text-gray-600"
-                        }`}
-                      />
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-gray-300 mb-2">Your Message</label>
-                <textarea
-                  value={feedbackForm.message}
-                  onChange={(e) =>
-                    setFeedbackForm({
-                      ...feedbackForm,
-                      message: e.target.value,
-                    })
-                  }
-                  className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 h-32"
-                  placeholder="Share your experience with us..."
-                  required
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-[0_0_15px_rgba(147,51,234,0.3)] flex items-center justify-center space-x-2"
-              >
-                <span>Submit Feedback</span>
-                <Send className="w-4 h-4" />
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
+      
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-purple-900 to-blue-900">
@@ -312,88 +197,7 @@ function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-gray-300 py-12 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8">
-          <div>
-            <div className="flex items-center mb-4">
-              <Heart className="h-8 w-8 text-purple-500" />
-              <span className="ml-2 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500">
-                MediCare
-              </span>
-            </div>
-            <p className="text-gray-400">
-              Providing quality healthcare services for a healthier tomorrow.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">
-              Quick Links
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="#home"
-                  className="hover:text-purple-400 transition-colors"
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/Generateimage"
-                  className="hover:text-purple-400 transition-colors"
-                >
-                  Generate Image
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/Chatbot"
-                  className="hover:text-purple-400 transition-colors"
-                >
-                  Chatbot
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#feedback"
-                  className="hover:text-purple-400 transition-colors"
-                >
-                  Feedback
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  className="hover:text-purple-400 transition-colors"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Services</h3>
-            <ul className="space-y-2">
-              <li>Cardiology</li>
-              <li>Emergency Care</li>
-              <li>Online Consultation</li>
-              <li>Laboratory Services</li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Contact</h3>
-            <ul className="space-y-2">
-              <li className="flex items-center">
-                <Phone className="w-4 h-4 mr-2 text-purple-500" />
-                +1 (555) 123-4567
-              </li>
-              <li>123 Medical Center Drive</li>
-              <li>Healthcare City, HC 12345</li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

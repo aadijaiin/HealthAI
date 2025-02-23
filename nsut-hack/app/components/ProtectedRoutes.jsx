@@ -11,7 +11,7 @@ export default function ProtectedRoute({ children }) {
 
   useEffect(() => {
     if (!token) {
-      router.push("/Signin"); // Redirect to sign-in page
+      router.push("/SignIn"); // Redirect to sign-in page
     } else {
       setLoading(false);
     }
