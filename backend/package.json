@@ -6,7 +6,7 @@
   "type":"module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":" yarn install && node server.js && exit 1"
+    "build":" yarn install && yarn start "
   },
   "keywords": [],
   "author": "",
